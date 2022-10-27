@@ -1,0 +1,38 @@
+$accent: #006be5;
+$primary-text-light-color: #fff;
+$notify-accent: #60d792;
+
+.notify {
+	position: fixed;
+	right: 0;
+	top: 2rem;
+	font-size: 1.5em;
+	min-height: 8rem;
+	padding: 0 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: fit-content;
+	transform: translateX(100%);
+	transition: transform 0.5s ease;
+	background-color: $notify-accent;
+	border-radius: 5px;
+	border: 2px solid $accent;
+	h3 {
+		color: $primary-text-light-color;
+	}
+	&__inner {
+		width: 100%;
+		min-height: 100%;
+	}
+	&__scrollbar {
+		position: absolute;
+		bottom: 0%;
+		left: 0;
+		height: 5px;
+		border-radius: 5px;
+		width: 100%;
+		background-color: $accent;
+	}
+}

@@ -1,0 +1,280 @@
+@import "_variables.scss";
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	border: none;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+	font-family: "Circe";
+}
+
+.main {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 5rem;
+}
+
+.container {
+	max-width: 140rem;
+	padding: 0 2.5em;
+	margin: 0 auto;
+}
+
+/* text */
+.subtitle {
+	color: $primary-text-color;
+	font-size: 2.4em;
+	text-transform: uppercase;
+	font-weight: bold;
+	&--small {
+		font-size: 1.8rem;
+	}
+}
+
+.title {
+	text-transform: uppercase;
+	font-weight: 900;
+	font-size: $title-font;
+}
+
+.text {
+	color: $primary-text-color;
+	font-size: 1.3rem;
+	font-weight: 300;
+
+	&--light {
+		color: $primary-text-light-color;
+	}
+	&--medium {
+		font-size: 1.5rem;
+	}
+}
+/* btn */
+
+%before-effect {
+	content: "";
+	display: block;
+	position: absolute;
+	transform: scaleX(0);
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	z-index: -1;
+	background-color: $accent;
+	transition: transform 0.4s ease 0s;
+}
+
+.btn {
+	cursor: pointer;
+	padding: 1.6rem 5.4rem;
+	border: 2px solid $border-gray;
+	color: $primary-text-color;
+	background: none;
+	text-transform: uppercase;
+	font-size: 1.3rem;
+	position: relative;
+	z-index: 1;
+	transition: color 0.2s linear 0.05s;
+	border-radius: 10px;
+	overflow: hidden;
+
+	&:last-child {
+		margin-left: 2.3rem;
+	}
+	&::before {
+		@extend %before-effect;
+	}
+	&:hover {
+		&::before {
+			transform: scaleX(1);
+		}
+		color: $primary-text-light-color;
+	}
+
+	&--accent {
+		border: 2px solid $accent;
+		background: $accent;
+		color: $primary-text-light-color;
+		&::before {
+			@extend %before-effect;
+			transform: scaleY(0);
+			background-color: $background-gray;
+		}
+		&:hover {
+			&::before {
+				transform: scaleY(1);
+			}
+			color: $primary-text-color;
+		}
+	}
+}
+
+/* product */
+
+.product {
+	width: 100%;
+	margin-top: 3rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	&__description {
+		width: 50%;
+		flex: 0 1 45%;
+	}
+
+	&__tags {
+		margin-top: 2.2em;
+		display: flex;
+	}
+
+	&__tag {
+		text-decoration: none;
+		color: $accent;
+		font-size: 1.3em;
+		position: relative;
+		font-weight: 300;
+		margin-left: 3rem;
+		&:first-child {
+			margin-left: 0;
+		}
+
+		&::before {
+			content: "";
+			width: 100%;
+			margin-top: 5px;
+			height: 2px;
+			background-color: $accent;
+			transform: scaleX(0);
+			bottom: 0;
+			position: absolute;
+			transition: transform 0.4s ease 0s;
+		}
+
+		&:hover {
+			&::before {
+				transform: scaleX(1);
+			}
+		}
+	}
+	&__availability {
+		max-width: 34rem;
+		padding: 1.6rem 2.2rem;
+		background-color: $light-gray;
+		margin-top: 2.2em;
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+		font-size: 1.3em;
+		font-weight: 300;
+		&-item {
+			display: flex;
+			align-items: center;
+			gap: 1.2em;
+			span {
+				color: $accent;
+				cursor: pointer;
+			}
+		}
+	}
+	&__buttons {
+		margin-top: 1em;
+		display: flex;
+		flex-wrap: wrap;
+	}
+	&__text {
+		margin-top: 4.3rem;
+	}
+
+	@media (max-width: 850px) {
+		flex-direction: column;
+		&__description {
+			margin-top: 2rem;
+			width: 100%;
+			flex: none;
+		}
+		.slider {
+			justify-content: center;
+		}
+		.preview {
+			flex: none;
+		}
+	}
+
+	@media (max-width: 940px) {
+		.prices {
+			font-size: 1.5rem;
+		}
+		.btn {
+			padding: 1.6rem 3.4rem;
+		}
+	}
+}
+
+%closeItem {
+	content: "";
+	display: block;
+	width: 20px;
+	height: 2px;
+	background-color: #fff;
+	position: absolute;
+	top: 50%;
+}
+/* close */
+.close {
+	position: absolute;
+	right: 10px;
+	top: 5px;
+	width: 2rem;
+	height: 2rem;
+	&__inner {
+		height: 100%;
+		cursor: pointer;
+		position: relative;
+	}
+	span {
+		@extend %closeItem;
+		transform: translateY(-50%) rotate(45deg);
+		&:last-child {
+			transform: translateY(-50%) rotate(-45deg);
+		}
+	}
+}
+
+/* back */
+
+.back {
+	color: $dark-gray;
+	text-decoration: none;
+	position: relative;
+	transition: text-decoration 0.1s ease 0s;
+	&::before {
+		content: "";
+		display: inline-block;
+		margin-right: 5px;
+		width: 10px;
+		height: 10px;
+		border-top: 2px solid $dark-gray;
+		border-left: 2px solid $dark-gray;
+		transition: transform 0.4s ease 0s;
+		transform: rotate(310deg) scaleX(1);
+	}
+	&:hover {
+		&::before {
+			transform: rotate(310deg) scaleX(0);
+		}
+		text-decoration: underline;
+	}
+}
+
+@media (max-width: 445px) {
+	.container {
+		padding: 0 1rem;
+	}
+}

@@ -1,0 +1,42 @@
+@import "_variables.scss";
+
+.pagination {
+	display: flex;
+	list-style: none;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	width: 40%;
+	margin: 0 auto;
+	margin-top: 3.5rem;
+	.disabled {
+		background-color: rgba($accent, 0.2);
+		cursor: not-allowed !important;
+	}
+	.active {
+		background-color: rgba($accent-bold, 0.4);
+		cursor: not-allowed !important;
+	}
+}
+
+.page-item {
+	display: block;
+	width: 3rem;
+	height: 3rem;
+	font-size: 1.5rem;
+	border: 1px solid $border-gray;
+	border-radius: 10px;
+	background-color: rgba($accent, 0.4);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	a {
+		color: #fff;
+		text-decoration: none;
+	}
+	span,
+	a {
+		display: inline-block;
+		width: 100%;
+	}
+}

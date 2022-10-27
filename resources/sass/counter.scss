@@ -1,0 +1,31 @@
+$light-gray: #f4f4f4;
+$border-gray: #d9d9d9;
+$primary-text-color: #131313;
+$primary-text-light-color: #fff;
+
+.counter {
+	margin-top: 1.5rem;
+	margin-top: 5rem;
+
+	&__button {
+		width: 4rem;
+		height: 4rem;
+		background-color: $primary-text-light-color;
+		color: $primary-text-color;
+		font-size: 1.8rem;
+		border: 1px solid $border-gray;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+	&__input {
+		width: 4rem;
+		height: 4rem;
+		background-color: $light-gray;
+		text-align: center;
+		&::-webkit-outer-spin-button,
+		&::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+	}
+}
