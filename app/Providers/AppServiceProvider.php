@@ -27,11 +27,11 @@ class AppServiceProvider extends ServiceProvider
     {
         //
          $listCategory = DB::table('category')
-        ->Join('categoryProduct', 'category.id', '=', 'categoryProduct.category_id')
+        ->Join('categoryproduct', 'category.id', '=', 'categoryproduct.category_id')
         ->select('category.id','category.query', 'category.title');
 
 
-        $allListCategory = $listCategory->Join('product', 'product.id', '=', 'categoryProduct.product_id')
+        $allListCategory = $listCategory->Join('product', 'product.id', '=', 'categoryproduct.product_id')
         ->addSelect(DB::raw('COUNT(product.id) as countProducts') )
         ->groupByRaw(DB::raw('id'))
         ->orderByDesc('countProducts')

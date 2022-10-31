@@ -1,8 +1,12 @@
 @php
 $categoryTitle;
+$categoryQuery;
+
 foreach($categories as $item){
 if($item->query == $category) {
 $categoryTitle = $item->title;
+$categoryQuery = $item->query;
+
 }
 }
 @endphp
@@ -19,7 +23,7 @@ $categoryTitle = $item->title;
 		<a href="#" class="product__tag">
 			Все модели
 			{{$product->brand}}</a>
-		<a href="#" class="product__tag">
+		<a href="/categories/{{$categoryQuery}}" class="product__tag">
 			{{$categoryTitle}}</a>
 	</div>
 	<div class="product__prices prices">

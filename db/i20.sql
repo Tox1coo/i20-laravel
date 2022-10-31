@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3307
--- Время создания: Окт 27 2022 г., 18:01
+-- Время создания: Ноя 01 2022 г., 00:25
 -- Версия сервера: 8.0.30
 -- Версия PHP: 7.2.34
 
@@ -29,6 +29,7 @@ USE `i20`;
 -- Структура таблицы `category`
 --
 
+DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
   `id` int NOT NULL,
   `title` varchar(50) NOT NULL,
@@ -57,6 +58,7 @@ INSERT INTO `category` (`id`, `title`, `description`, `query`) VALUES
 -- Структура таблицы `categoryproduct`
 --
 
+DROP TABLE IF EXISTS `categoryproduct`;
 CREATE TABLE `categoryproduct` (
   `id` int NOT NULL,
   `category_id` int NOT NULL,
@@ -175,9 +177,49 @@ INSERT INTO `categoryproduct` (`id`, `category_id`, `product_id`, `main`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `feedback`
+--
+
+DROP TABLE IF EXISTS `feedback`;
+CREATE TABLE `feedback` (
+  `id` int NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `mail` varchar(319) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `birthday` date NOT NULL,
+  `theme` varchar(25) NOT NULL,
+  `message` varchar(400) NOT NULL,
+  `consent` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `feedback`
+--
+
+INSERT INTO `feedback` (`id`, `name`, `mail`, `gender`, `birthday`, `theme`, `message`, `consent`) VALUES
+(1, 'dsadsadasdasdf', 'www.dfaniil_.ru@mail.ru', 'men', '2022-10-17', 'dsadadsa', 'asdsadas', 1),
+(2, 'dsadsadasdasdf', 'www.dfaniil_.ru@mail.ru', 'men', '2022-10-17', 'dsadadsa', 'asdsadas', 1),
+(3, 'dsadsadasdasdf', 'www.dfaniil_.ru@mail.ru', 'men', '2022-10-17', 'dsadadsa', 'asdsadas', 1),
+(4, 'dsadsadasdasdf', 'www.dfaniil_.ru@mail.ru', 'men', '2022-10-17', 'dsadadsa', 'asdsadas', 1),
+(5, 'dsadsadasdasdf', 'www.dfaniil_.ru@mail.ru', 'men', '2022-10-17', 'dsadadsa', 'dsdsadsa', 1),
+(6, 'Даниил Бураков', 'www.daniil_.ru@mail.ru', 'women', '2022-10-18', 'dasdsdasd', 'dasdsadasdasdasd', 1),
+(7, 'Даниил Бураков', 'www.daniil_.ru@mail.ru', 'men', '2022-10-18', 'dasdsdasd', 'dasdas', 1),
+(8, 'Даниил Бураков', 'www.daniil_.ru@mail.ru', 'men', '2022-10-18', 'dasdsdasd', 'dadsadsaas', 1),
+(9, 'Даниил Бураков', 'www.daniil_.ru@mail.ru', 'men', '2022-10-18', 'dasdsdasd', 'dddsadasda', 1),
+(10, 'Даниил Бураков', 'www.daniil_.ru@mail.ru', 'men', '2022-10-18', 'dasdsdasd', 'выфвыыфвф', 1),
+(11, 'Даниил Бураков', 'www.daniil_.ru@mail.ru', 'men', '2022-10-18', 'dasdsdasd', 'вфывыфвф', 1),
+(12, 'Даниил Бураков', 'www.daniil_.ru@mail.ru', 'men', '2022-10-18', 'dasdsddaasd', 'dadaddasds', 1),
+(13, 'Даниил Бураков', 'www.daniil_.ru@mail.ru', 'men', '2022-10-18', 'dasdsddaasd', 'dasddas', 1),
+(14, 'Даниил Бураков', 'www.daniil_.ru@mail.ru', 'men', '2022-10-18', 'dasdsddaasd', 'dsdasdsadsa', 1),
+(15, 'Даниил Бураков', 'www.daniil_.ru@mail.ru', 'men', '2022-10-18', 'dasdsddaasd', 'dsdadsa', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `images`
 --
 
+DROP TABLE IF EXISTS `images`;
 CREATE TABLE `images` (
   `id` int NOT NULL,
   `link` varchar(100) NOT NULL,
@@ -241,6 +283,7 @@ INSERT INTO `images` (`id`, `link`, `alt`) VALUES
 -- Структура таблицы `imagesproduct`
 --
 
+DROP TABLE IF EXISTS `imagesproduct`;
 CREATE TABLE `imagesproduct` (
   `id` int NOT NULL,
   `image_id` int NOT NULL,
@@ -305,6 +348,7 @@ INSERT INTO `imagesproduct` (`id`, `image_id`, `product_id`, `preview`) VALUES
 -- Структура таблицы `product`
 --
 
+DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
   `id` int NOT NULL,
   `title` varchar(50) NOT NULL,
@@ -357,6 +401,12 @@ ALTER TABLE `categoryproduct`
   ADD KEY `product_id` (`product_id`);
 
 --
+-- Индексы таблицы `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `images`
 --
 ALTER TABLE `images`
@@ -392,6 +442,12 @@ ALTER TABLE `category`
 --
 ALTER TABLE `categoryproduct`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+
+--
+-- AUTO_INCREMENT для таблицы `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT для таблицы `images`

@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'homeController@home');
 Route::get('/categories/{category}', 'categoryController@categoryPage');
 Route::get('/categories/{category}/{id}', 'categoryController@categoryProductPage');
+Route::get('/form', 'formController@load');
+Route::post('/form/submit', 'formController@submit');
